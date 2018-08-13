@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="ja">
+    <meta charset="UTF-8">
+    <title>Rails Camp Blog</title>
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+</head>
+<body>
+
+<header>
+    <p id="logo"><a href="">RailsCamp<span>Blog</span></a></p>
+    <nav>
+        <ul>
+            <li>
+                <a>
+            <%=link_to 'トップ', posts_path %>
+            <% if logged_in? %>
+            <%=link_to '新規投稿', new_post_path %>
+            <%=link_to 'ログアウト', logout_path, method: :delete %>
+            <% else %>
+            <%= link_to 'ユーザー登録', new_user_path %>
+            <%=link_to 'ログイン', login_path %>
+            <% end %>
+            <div class="clear"></div>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="clear">
+
+    </div>
+</header>
+
+<div id="main">
+    <%= image_tag 'main-img.jpg' %>
+</div>
+
+
+<div id="article_wrap">
+
+
+    <div id="article_list">
+        <u1>
+        <% @post.each do |post| %>
+        <div>
+         <h2><a><%= link_to post.title, post_path(post)%></a><h2>
+        <p>
+        <%= post.updated_at.strftime("%Y-%m-%d") %>
+        </p>
+        <% if logged_in? %>
+        <%= link_to '編集', edit_post_path(post), class: 'command' %>
+        <%= link_to '削除',
+            post_path(post),
+            method: :delete,
+            class: 'command',
+            data: { confirm: 'Sure?' }%>
+        <% end %>
+        </div>
+        <% end %>
+        </ul>
+
+
+    </div>
+
+    <div id="sidebar">
+
+        <h2>★PV数ランキング</h2>
+        <ul>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<footer>
+    <div id="footer_inner">
+        <p>Copyright RailsCamp 2015 All Rights Reserved</p>
+    </div>
+</footer>
+
+</body>
+</html>
