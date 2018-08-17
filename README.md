@@ -6,6 +6,8 @@
 ### ・カテゴリページに遷移した後に、それぞれのカテゴリの記事一覧を見ることができる。
 
 参考URL：
-- https://github.com/hamichamp/collection_check_boxes_sample
-- http://railscasts.com/episodes/382-tagging?language=ja&view=asciicast
+- カテゴリモデルと記事モデルの多対多関係を作る。
+   - https://github.com/hamichamp/collection_check_boxes_sample
+- 記事がのカテゴリを表示して、同一カテゴリを持つ記事を一覧表示する。   
+   - http://railscasts.com/episodes/382-tagging?language=ja&view=asciicast
    
