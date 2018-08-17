@@ -7,5 +7,5 @@
 
 参考URL：
 - https://github.com/hamichamp/collection_check_boxes_sample
- http://railscasts.com/episodes/382-tagging?language=ja&view=asciicast
+- http://railscasts.com/episodes/382-tagging?language=ja&view=asciicast
    
