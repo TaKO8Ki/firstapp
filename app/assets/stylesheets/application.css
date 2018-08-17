@@ -180,17 +180,18 @@ div#content h2{
 }
 
 /* forms */
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 500px;
-  margin-bottom: 15px;
-  margin: 0 auto;
-  height: 150px;
-  @include box_sizing;
-}
 
 input {
   height: auto !important;
+}
+
+input[type="text"] {
+    width: 342px;
+}
+
+textarea {
+    width: 400px;
+    height: 200px;
 }
 
 div#new_article {

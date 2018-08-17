@@ -1,11 +1,15 @@
 class PostsController < ApplicationController
-    
+
     def index
-        @post = Post.all.order(created_at: :desc)
+        if params[:category]
+            @post = Post.category_with(params[:category])
+        else
+            @post = Post.all.order(created_at: :desc)
+        end
     end
 
     def show
-        @post = Post.find(params[:id])
+        @post = Post.find_by(params[:id])
     end
 
     def new
@@ -14,7 +18,7 @@ class PostsController < ApplicationController
 
     def create
         @post = Post.new(post_params)
-        if @post.save
+        if @post.save and @post.post_categories.create
             redirect_to posts_path
         else
             render 'new'
@@ -42,7 +46,7 @@ class PostsController < ApplicationController
 
     private
         def post_params
-            params.require(:post).permit(:title, :content)
+            params.require(:post).permit(:title, :content,{ :category_ids => [] })
         end
 
 end

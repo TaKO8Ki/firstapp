@@ -1,11 +1,9 @@
-<%=render "form" %>
 <div id="main">
     <%= image_tag 'main-img.jpg' %>
 </div>
 
 
 <div id="article_wrap">
-
 
     <div id="article_list">
         <u1>
@@ -16,7 +14,6 @@
         <%= post.updated_at.strftime("%Y-%m-%d") %>
         <% post.post_categories.each do |f| %>
         <%= f.category.category %>
-        <% raw post.categories.map(&:category).map { |t| link_to t, category_path(t) }.join(', ') %>
         <% end %>
         </p>
         <% if logged_in? %>

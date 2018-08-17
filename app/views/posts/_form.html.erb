@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="ja">
+    <meta charset="UTF-8">
+    <title>Rails Camp Blog</title>
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+</head>
+<body>
+
+<header>
+    <p id="logo"><a href="">RailsCamp<span>Blog</span></a></p>
+    <nav>
+        <ul>
+            <li>
+                <a>
+            <%=link_to 'トップ', posts_path %>
+            <% if logged_in? %>
+            <%= link_to 'カテゴリー', categories_path %>
+            <%=link_to '新規投稿', new_post_path %>
+            <%=link_to 'ログアウト', logout_path, method: :delete %>
+            <% else %>
+            <%= link_to 'ユーザー登録', new_user_path %>
+            <%=link_to 'ログイン', login_path %>
+            <% end %>
+            <div class="clear"></div>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="clear">
+</div>
+</header>
