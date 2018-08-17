@@ -8,15 +8,14 @@
 
 
     <div id="article_list">
-        <u1>
+        <ul>
         <% @post.each do |post| %>
         <div>
          <h2><a><%= link_to post.title, post_path(post)%></a><h2>
         <p>
         <%= post.updated_at.strftime("%Y-%m-%d") %>
         <% post.post_categories.each do |f| %>
-        <%= f.category.category %>
-        <% raw post.categories.map(&:category).map { |t| link_to t, category_path(t) }.join(', ') %>
+        <%= link_to f.category.category, posts_path(category: f.category.category) %>
         <% end %>
         </p>
         <% if logged_in? %>
