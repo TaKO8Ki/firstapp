@@ -1,24 +1,6 @@
-# README
+### 簡単なブログアプリケーション
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### ・新規登録して、ログインした者だけが新規ページ作成、更新、削除ができる。
+### ・それぞれの記事にはカテゴリをつけることができる。
+### ・記事についているカテゴリをクリックすると、そのカテゴリの記事一覧を見ることができる。
+### ・カテゴリページに遷移した後に、それぞれのカテゴリの記事一覧を見ることができる。
