@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     end
 
     def show
-        @post = Post.find_by(params[:id])
+        @post = Post.find(params[:id])
     end
 
     def new
@@ -17,7 +17,9 @@ class PostsController < ApplicationController
     end
 
     def create
+        set_current_user
         @post = Post.new(post_params)
+        @post.user_id = @current_user.id
         if @post.save
             redirect_to posts_path
         else
@@ -30,6 +32,7 @@ class PostsController < ApplicationController
     end
 
     def update
+        set_current_user
         @post = Post.find(params[:id])
         if @post.update(post_params)
             redirect_to posts_path
@@ -46,7 +49,11 @@ class PostsController < ApplicationController
 
     private
         def post_params
-            params.require(:post).permit(:title, :content,{ :category_ids => [] })
+            params.require(:post).permit(:title, :content, :picture, { :category_ids => [] })
+        end
+
+        def set_current_user
+            @current_user = User.find_by(id: session[:user_id])
         end
 
 end

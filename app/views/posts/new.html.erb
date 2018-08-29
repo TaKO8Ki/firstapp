@@ -12,6 +12,14 @@
                <% end %>
             </p>
             <p>
+                <%= f.label :picture %></br>
+               <%= f.file_field :picture, id: :picture %>
+               <%= f.hidden_field :picture_cache %>
+               <% if  @post.errors.messages[:picture].any? %>
+               <span class="error"><%= @post.errors.messages[:picture][0] %></span>
+               <% end %>
+            </p>
+            <p>
                 <%= f.label :category %></br>
                 <%= collection_check_boxes(:post, :category_ids, Category.all, :id, :category) do |b| %>
                 <%= b.label { b.check_box + b.text } %>

@@ -1,9 +1,26 @@
 <%=render "form" %>
+
+<p class="picture">
+    <%= image_tag @post.picture.url if @post.picture.present?%>
+</p>
+
 <div id="title">
     <div>
-        <h1><h2><%= @post.title %></h2></h1>
+        <h2>
+        <h1><%= @post.title %></h1>
+        user_email_adress：<%= @post.user.email if @post.user.present? %>
+        </br>
+        </h2>
+        category：
+        <% @post.post_categories.each do |f| %>
+        <%= link_to f.category.category, posts_path(category: f.category.category) %>
+        <% end %>
     </div>
 </div>
+
+<p>
+
+</p>
 
 <div id="article_wrap">
 

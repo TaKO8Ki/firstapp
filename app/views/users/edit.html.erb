@@ -1,0 +1,32 @@
+<div id="article_wrap">
+
+        <div>
+            <h2>
+                <%= form_for @user do |f| %>
+            <p>
+                <%= f.label :email %></br>
+               <%= f.text_field :email %>
+               <% if  @user.errors.messages[:email].any? %>
+               <span class="error"><%= @user.errors.messages[:email][0] %></span>
+               <% end %>
+            </p>
+            <p>
+               <%= f.submit %>
+            </p>
+            <% end %>
+        </h2>
+        </div>
+
+    </div>
+
+    <div class="clear"></div>
+    </div>
+
+<footer>
+    <div id="footer_inner">
+        <p>Copyright RailsCamp 2015 All Rights Reserved</p>
+    </div>
+</footer>
+
+</body>
+</html>

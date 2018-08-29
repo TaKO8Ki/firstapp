@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :post_categories
     resources :category_indexes
+    resources :post_users
     get  '/signup',  to: 'users#new'
     get    '/login',   to: 'sessions#new'
     post   '/login',   to: 'sessions#create'

@@ -1,4 +1,3 @@
-<%=render "form" %>
 <div id="main">
     <%= image_tag 'main-img.jpg' %>
 </div>
@@ -20,7 +19,7 @@
         【My Post】
         <% end %>
         <%= post.updated_at.strftime("%Y-%m-%d") %>
-        category：
+        category:
         <% post.post_categories.each do |f| %>
         <%= link_to f.category.category, posts_path(category: f.category.category) %>
         <% end %>

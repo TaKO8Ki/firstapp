@@ -104,6 +104,11 @@ div#article_list div p{
     color: #7d7d7d;
 }
 
+.picture2 img {
+    width: 200px;
+    height: auto;
+}
+
 /* サイドバー
 ------------------------------------------------------------*/
 
@@ -169,6 +174,11 @@ div#title h1{
 
 /* 記事ページ　ー　記事内容
 ------------------------------------------------------------*/
+
+.picture img {
+    max-width: 300px;
+    height: auto;
+}
 
 div#content{
     width: 660px;
