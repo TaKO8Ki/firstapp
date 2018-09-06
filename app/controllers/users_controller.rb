@@ -1,7 +1,23 @@
 class UsersController < ApplicationController
 
-    def show
+    def index
         @user = User.find(params[:id])
+        @post = Post.where(user_id: @user)
+    end
+
+    def show
+        set_current_user
+        @user = User.find(params[:id])
+        @category = Category.find_by_category(params[:category])
+        @all_post = Post.where(user_id: @user)
+
+        if params[:category]
+            @post = Post.category_with(params[:category]).where(user_id: @user)
+        else
+            @post = Post.where(user_id: @user)
+        end
+
+        @likes = Like.where(post_id: @all_post).count
     end
 
     def new
@@ -24,18 +40,35 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-        if @user.update(user_params)
-            redirect_to posts_path
+        if @user.update_attributes(user_params)
+            redirect_to @user
         else
             render 'edit'
         end
     end
 
+    def following
+        @title = "Following"
+        @user  = User.find(params[:id])
+        @users = @user.following
+        render 'show_follow'
+    end
+
+    def followers
+        @title = "Followers"
+        @user  = User.find(params[:id])
+        @users = @user.followers
+        render 'show_follow'
+    end
+
     private
 
     def user_params
-        params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+        params.require(:user).permit(:name, :email, :password, :password_confirmation, :picture)
+    end
+
+    def set_current_user
+        @current_user = User.find_by(id: session[:user_id])
     end
 
 end

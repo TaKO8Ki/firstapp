@@ -1,6 +1,9 @@
 class Post < ApplicationRecord
     has_many :post_categories, dependent: :destroy
     has_many :categories, :through => :post_categories, dependent: :destroy
+    has_many :likes, dependent: :destroy
+    has_many :iine_users, through: :likes, source: :user
+    has_many :comments, dependent: :destroy
     belongs_to :user
     mount_uploader :picture, PictureUploader
 
@@ -25,6 +28,10 @@ class Post < ApplicationRecord
 
     def user_with
         Post.find_by_user(user).posts
+    end
+
+    def like_user(user_id)
+        likes.find_by(user_id: user_id)
     end
 
 end

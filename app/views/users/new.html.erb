@@ -40,6 +40,19 @@
               <div class="col-md-6 col-md-offset-3">
                 <%= form_for(@user) do |f| %>
 
+                <p>
+                    <%= f.label :picture %></br>
+                   <%= f.file_field :picture, id: :picture %>
+                   <%= f.hidden_field :picture_cache %>
+                   <% if  @user.errors.messages[:picture].any? %>
+                   <span class="error"><%= @user.errors.messages[:picture][0] %></span>
+                   <% end %>
+                </p>
+                <p class="picture">
+                    Selected picture</br>
+                    <%= image_tag @user.picture.url if @user.picture.present? %>
+                </p>
+
                   <%= f.label :email %>
                   </br>
                   <%= f.email_field :email %>

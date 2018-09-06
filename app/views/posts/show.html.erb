@@ -7,14 +7,20 @@
 <div id="title">
     <div>
         <h2>
-        <h1><%= @post.title %></h1>
-        user_email_adress：<%= @post.user.email if @post.user.present? %>
-        </br>
+            <%= @post.title %>
+            <% @post.post_categories.each do |f| %>
+            <%= link_to f.category.category, posts_path(category: f.category.category) %>
+            <% end %>
         </h2>
-        category：
-        <% @post.post_categories.each do |f| %>
-        <%= link_to f.category.category, posts_path(category: f.category.category) %>
-        <% end %>
+        <div>
+        <p class='picture3'>
+            <%= image_tag @post.user.picture.url if @post.user.picture? %>
+        </p>
+        <p>
+            <%= link_to @post.user.email, user_path(@post.user) if @post.user.email.present? %>
+        </p>
+        </div>
+
     </div>
 </div>
 
@@ -26,7 +32,33 @@
 
     <div id="content">
             <h2><p><%= @post.content %></p></h2>
+            <div id="comment">
+                <h3>Comments</h3>
+                <% if  @post.comments.any? %>
+                <ul>
+                    <% @post.comments.each do |comment| %>
+                    <li>
+                        <%= comment.content %>
+                        <%= link_to '[x]',
+                        post_comment_path(@post, comment),
+                        method: :delete,
+                        class: 'command',
+                            data: { confirm: 'Sure?' }%>
+                    </li>
+                    <% end %>
+                </ul>
+                    <% end %>
+                    <%= form_for ([@post, @post.comments.build]) do |f| %>
+                    <p>
+                        <%= f.text_field :content %>
+                    </p>
+                    <p>
+                        <%= f.submit %>
+                    </p>
+                    <% end %>
+            </div>
     </div>
+
 
 
     <div id="sidebar">

@@ -3,13 +3,29 @@
         <div>
             <h2>
                 <%= form_for @user do |f| %>
-            <p>
-                <%= f.label :email %></br>
-               <%= f.text_field :email %>
-               <% if  @user.errors.messages[:email].any? %>
-               <span class="error"><%= @user.errors.messages[:email][0] %></span>
-               <% end %>
-            </p>
+                <p>
+                    <%= f.label :picture %></br>
+                   <%= f.file_field :picture, id: :picture %>
+                   <%= f.hidden_field :picture_cache %>
+                   <% if  @user.errors.messages[:picture].any? %>
+                   <span class="error"><%= @user.errors.messages[:picture][0] %></span>
+                   <% end %>
+                </p>
+                <p class="picture">
+                    Selected picture</br>
+                    <%= image_tag @user.picture.url if @user.picture.present? %>
+                </p>
+                <p>
+                    <%= f.label :email %></br>
+                    <%= f.text_field :email %></br>
+                    <%= f.label :password %></br>
+                    <%= f.password_field :password %></br>
+                    <%= f.label :password_confirmation, "Confirm Password" %></br>
+                    <%= f.password_field :password_confirmation %></br>
+                    <% if  @user.errors.messages[:email].any? %></br>
+                   <span class="error"><%= @user.errors.messages[:email][0] %></span>
+                   <% end %>
+                </p>
             <p>
                <%= f.submit %>
             </p>

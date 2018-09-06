@@ -1,23 +1,79 @@
-<div id="title">
+<%= render 'form' %>
+
+<div id="user_article_wrap">
+<div id="user_article_list">
+    <h1>
+        <% if params[:category] %>
+            <%= "カテゴリー#{@category.category}　記事一覧"%>
+        <% else %>
+            記事一覧
+        <% end %>
+    </h1>
+    <ul>
+    <% @post.each do |post| %>
     <div>
-        <h2>
-        <h1><%= @user.email %></h1>
-        </h2>
+    <p class="picture2">
+        <%= image_tag post.picture.url if post.picture.present? %>
+    </p>
+     <h2><a><%= link_to post.title, post_path(post)%></a><h2>
+    <p>
+    <%= post.updated_at.strftime("%Y-%m-%d") %>
+
+    <% post.post_categories.each do |f| %>
+    <%= link_to f.category.category, user_path(category: f.category.category) %>
+    <% end %>
+    </p>
+
+    <p>コメント<%= post.comments.count %></br></p>
+    <%= render partial: 'likes/like_user', locals: { post: post, likes: @likes } %>
+
+    <% if post.user == @current_user %>
+    <%= link_to '編集', edit_post_path(post), class: 'command' %>
+    <%= link_to '削除',
+        post_path(post),
+        method: :delete,
+        class: 'command',
+        data: { confirm: 'Sure?' }%>
+        <% end %>
     </div>
+    <% end %>
+    </ul>
 </div>
 
-<div id="article_wrap">
+<div class="stats">
+  <%= render 'shared/stats' %>
+</div>
 
-    <div id="content">
-            <h2><p></p></h2>
+    <div id="user_sidebar">
+
+        <h2>ユーザー設定</h2>
+        <ul>
+        <div class="user_profile">
+            <p class='picture2'>
+                <%= image_tag @user.picture.url if @user.picture.present? %>
+            </p>
+            <p>
+                <%= @user.email %>
+            </p>
+        </div>
+    </ul>
+
+<%= render 'follow_form' if logged_in? %>
+
+    <div class="good">
+        もらったいいねの数
+        <ul>
+            <%= @likes %>
+        </ul>
     </div>
 
-
-    <div id="sidebar">
-
-        <h2>★PV数ランキング</h2>
-        <ul>
-        </ul>
+    <% if @user == @current_user %>
+    <div class="setting">
+    <ul>
+        <%= link_to 'メールアドレス変更', edit_user_path(@current_user) %>
+    </ul>
+</div>
+    <% end %>
     </div>
     <div class="clear"></div>
 </div>

@@ -105,8 +105,35 @@ div#article_list div p{
 }
 
 .picture2 img {
-    width: 200px;
+    width: 100px;
     height: auto;
+}
+
+div#user_article_wrap{
+    width: 1000px;
+    margin: 20px auto;
+}
+
+div#user_article_list{
+    width: 660px;
+    float: right;
+}
+
+div#user_article_list div{
+    padding: 20px 0;
+    border-bottom: 1px solid #7d7d7d;
+}
+
+div#user_article_list div h2 a{
+    font-size: 18px;
+    color: #161616;
+    text-decoration: none;
+}
+
+div#user_article_list div p{
+    font-size: 14px;
+    font-weight: bold;
+    color: #7d7d7d;
 }
 
 /* サイドバー
@@ -133,6 +160,35 @@ div#sidebar ul li a span{
     color: #161616;
 }
 
+div#user_sidebar{
+    width: 300px;
+    float: left;
+}
+
+div#user_sidebar h2{
+    margin: 20px 0;
+}
+
+div#user_sidebar ul li{
+    list-style-type: none;
+}
+
+div#user_sidebar ul li a{
+    color: #00a9a2;
+}
+
+div#user_sidebar ul li a span{
+    color: #161616;
+}
+
+div#user_sidebar div {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border:5px solid #bbb;
+    background-color:#ccc;
+}
+
 
 /* トップ　ー　フッター
 ------------------------------------------------------------*/
@@ -156,19 +212,29 @@ div#footer_inner p{
 
 div#title{
     background-color: #343434;
-    height: 130px;
+    height: 250px;
     color: #FFF;
     text-shadow: 0px 3px 5px #000;
-    padding-top: 60px;
+    padding-top: 30px;
 }
 
-div#title div{
+div#title div h2{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+div#title div p {
     width: 1000px;
     margin: 0 auto;
 }
 
 div#title h1{
     font-size: 30px;
+}
+
+.picture4 img {
+    width: 200px;
+    height: auto;
 }
 
 
@@ -180,13 +246,26 @@ div#title h1{
     height: auto;
 }
 
+.picture3 img {
+    max-width: 70px;
+    height: auto;
+}
+
+.user {
+    padding: 1em;
+    width: 50%;
+    border: 2px solid #000;
+    background-color: #ccc;
+    box-shadow: 1px 1px 2px #ccc;
+}
+
 div#content{
     width: 660px;
     float: left;
 }
 
 div#content h2{
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 /* forms */
@@ -207,4 +286,21 @@ textarea {
 div#new_article {
     margin: 0 auto;
     text-align: center;
+}
+
+/* user_follower */
+
+.picture_follower img{
+    width: 70px;
+    height: auto;
+}
+
+.picture_follower_index img {
+    width: 200px;
+    height: auto;
+}
+
+.picture_follow_profile img {
+    width: 200px;
+    height: auto;
 }

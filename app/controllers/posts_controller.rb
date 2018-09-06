@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
     def index
+        @likes = Like.where(post_id: params[:post_id])
         if params[:category]
             @post = Post.category_with(params[:category])
         else

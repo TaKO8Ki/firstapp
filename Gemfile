@@ -5,7 +5,13 @@ ruby '2.3.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 
+gem 'will_paginate'
+
+gem 'rails-ujs'
+
 gem 'carrierwave'
+
+gem "acts_as_follower", github: "tcocca/acts_as_follower"
 
 gem 'redis'
 

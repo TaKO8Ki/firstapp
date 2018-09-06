@@ -1,0 +1,38 @@
+<div id="title">
+    <div>
+        <h2>
+        <h1><%= @user.email %></h1>
+        </h2>
+    </div>
+</div>
+
+<% @post.each do |post| %>
+<div id="article">
+    <%= post.title %>
+    <% end %>
+</div>
+
+<div id="article_wrap">
+
+    <div id="content">
+            <h2><p></p></h2>
+    </div>
+
+
+    <div id="sidebar">
+
+        <h2>★PV数ランキング</h2>
+        <ul>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<footer>
+    <div id="footer_inner">
+        <p>Copyright RailsCamp 2015 All Rights Reserved</p>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+<% if @post.user != @current_user %>
+  <%= button_to user_follow_path(follows, follower_id: @post.user.followers), method: :delete, id: "like-button", remote: true do %>
+    <%= image_tag("icon_red_heart.png") %>
+    <span>
+      <%= @post.user.followers_count %>
+    </span>
+  <% end %>
+<% else %>
+  <%= button_to user_follows_path(@post.user), id: "like-button", remote: true do %>
+    <%= image_tag("icon_heart.png") %>
+    <span>
+      <%= @post.user.followers_count %>
+    </span>
+  <% end %>
+<% end %>

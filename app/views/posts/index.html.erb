@@ -11,7 +11,7 @@
         <ul>
         <% @post.each do |post| %>
         <div>
-        <p class="picture2">
+        <p class="picture4">
             <%= image_tag post.picture.url if post.picture.present? %>
         </p>
          <h2><a><%= link_to post.title, post_path(post)%></a><h2>
@@ -20,12 +20,17 @@
         【My Post】
         <% end %>
         <%= post.updated_at.strftime("%Y-%m-%d") %>
-        category：
+        
         <% post.post_categories.each do |f| %>
         <%= link_to f.category.category, posts_path(category: f.category.category) %>
         <% end %>
         </p>
         <% if logged_in? %>
+
+        <p>コメント<%= post.comments.count %></br></p>
+        <%= render partial: 'likes/like', locals: { post: post, likes: @likes } %>
+
+        <% end %>
         <% if post.user == @current_user %>
         <%= link_to '編集', edit_post_path(post), class: 'command' %>
         <%= link_to '削除',
@@ -33,7 +38,6 @@
             method: :delete,
             class: 'command',
             data: { confirm: 'Sure?' }%>
-        <% end %>
         <% end %>
         </div>
         <% end %>

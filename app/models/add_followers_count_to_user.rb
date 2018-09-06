@@ -1,0 +1,2 @@
+class AddFollowersCountToUser < ApplicationRecord
+end
